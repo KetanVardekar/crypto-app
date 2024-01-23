@@ -1,9 +1,16 @@
-import React from 'react'
-import axios from 'axios';
+import React, { useEffect } from "react";
+import axios from "axios";
+import { server } from "..";
 const Exchanges = () => {
-  return (
-    <div>Exchanges</div>
-  )
-}
+  useEffect(() => {
+    const fetchExchanges = async () => {
+      const { data } = await axios.get(`${server}/exchanges`);
+      console.log(data);
+    };
+    fetchExchanges();
+  }, []);
 
-export default Exchanges
+  return <div>Exchanges</div>;
+};
+
+export default Exchanges;
